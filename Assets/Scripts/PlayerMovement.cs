@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if ((Input.GetKeyDown("a") || Input.GetKeyDown("d") || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow)) && !isPaused)
+        if ((Input.GetKeyDown("a") || Input.GetKeyDown("d") || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow)) && !isPaused )
         {
             if (!isCamouflauge)
             {
@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown("s") || Input.GetKeyDown(KeyCode.DownArrow))
+        if ((Input.GetKeyDown("s") || Input.GetKeyDown(KeyCode.DownArrow)) && !PlayerSearching.isDead)
         {
             if (isCamouflauge)
             {

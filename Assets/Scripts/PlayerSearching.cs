@@ -36,7 +36,7 @@ public class PlayerSearching : MonoBehaviour
             {
                 fadeToNewScene = true;
                 delayTime = 0;
-                isDead = false;
+//                isDead = false;
             }
             delayTime += Time.deltaTime;
             
@@ -61,7 +61,7 @@ public class PlayerSearching : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
      
-        if (collision.CompareTag("SearchingLight") && (notHidden || colourNotMatching || PlayerMovement.player_velocity!=new Vector2(0,0)))
+        if (collision.CompareTag("SearchingLight") && (notHidden || colourNotMatching || (PlayerMovement.player_velocity.x>0.01) || (PlayerMovement.player_velocity.y>0.01)))
         {
             Debug.Log("Game Over");
             isDead = true;
