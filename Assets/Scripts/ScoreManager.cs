@@ -10,12 +10,14 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI score;
     public static float scoreValue;
     public static float finalScoreValue;
+    public static float starsCollected;
     public float initialPosition;
     public float distance;
     public float maxDistance;
     public Rigidbody2D player;
     void Start()
     {
+        starsCollected = 0;
         initialPosition = player.position.x;
         distance = 0;
         maxDistance = -100;
@@ -27,7 +29,7 @@ public class ScoreManager : MonoBehaviour
     {
         distance = player.position.x - initialPosition;
         maxDistance = Mathf.Max(distance, maxDistance);
-        scoreValue = maxDistance;
+        scoreValue = maxDistance + starsCollected;
         if (scoreValue > finalScoreValue)
         {
             finalScoreValue = scoreValue;

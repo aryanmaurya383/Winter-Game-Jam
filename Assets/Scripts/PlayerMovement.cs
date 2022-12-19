@@ -16,12 +16,14 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator; 
     public static bool isPaused;
     public static bool isCamouflauge;
+    public static bool falling;
 
     [SerializeField] GameObject pauseMenu;
 
     // Start is called before the first frame update
     void Start()
     {
+        falling = false;
         isPaused = false;
         isCamouflauge= false;
         isGrounded = true;
@@ -33,6 +35,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player.position.y < -10f)
+        {
+            
+            falling = true;
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             PlayerMovement.isPaused = true;

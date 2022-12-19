@@ -11,6 +11,7 @@ TagManager:
   - GroundBlocks
   - SearchingLight
   - HidingTrigger
+  - Stars
   layers:
   - Default
   - TransparentFX

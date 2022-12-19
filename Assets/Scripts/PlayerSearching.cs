@@ -29,7 +29,16 @@ public class PlayerSearching : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (PlayerMovement.falling)
+        {
+
+            Debug.Log("Game Over");
+            isDead = true;
+            PlayerMovement.falling = false;
+            FadingAnimation.newSceneName = "GameOverScene";
+            animator.enabled = true;
+            animator.SetBool("IsDead", true);
+        }
         if(isDead)
         {
             if(delayTime > 0.8f)
@@ -49,6 +58,11 @@ public class PlayerSearching : MonoBehaviour
         {
             notHidden = false;
         }
+        if (collision.CompareTag("Stars"))
+        {
+            ScoreManager.starsCollected += 15;
+            Destroy(collision.gameObject);
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -60,11 +74,13 @@ public class PlayerSearching : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-     
-        if (collision.CompareTag("SearchingLight") && (notHidden || colourNotMatching || (PlayerMovement.player_velocity.x>0.01) || (PlayerMovement.player_velocity.y>0.01)))
+        
+        if  (collision.CompareTag("SearchingLight") && (notHidden || colourNotMatching || (PlayerMovement.player_velocity.x>0.01) || (PlayerMovement.player_velocity.y>0.01)))
         {
+            
             Debug.Log("Game Over");
             isDead = true;
+            PlayerMovement.falling = false;
             FadingAnimation.newSceneName = "GameOverScene";
             animator.enabled = true;
             animator.SetBool("IsDead", true);
